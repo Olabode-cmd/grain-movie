@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <h1 className='text-center text-green-600 text-3xl mt-20'>Blank page</h1>
+      <h1 className='text-center text-green-600 text-3xl mt-20 max-w-7xl'>Blank page</h1>
 
       {/* {media.map((movie) => (
         <div>
