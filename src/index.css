@@ -1,1 +1,12 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+body {
+    background: #111;
+    color: #fff; 
+}
+
+.hero-card {
+    background: linear-gradient(to right, #111 49%, #00000000 53%), url('./assets/Images/image.jpg');
+    background-size: cover;
+    height: 700px;
+}
