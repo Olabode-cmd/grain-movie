@@ -1,12 +1,18 @@
 import { useState } from 'react'
 import media from './data/media'
-import Navbar from './components/navbar'
+import Navbar from './components/navbar.jsx'
 import HeaderImage from './assets/Images/interstellar.webp'
-import { FiSearch } from 'react-icons/fi'
+import { IoSearchSharp } from "react-icons/io5";
+import Filmcard from './components/filmcard.jsx';
+import { Link } from 'react-router';
+import { IoChevronForward } from "react-icons/io5";
 
 function App() {
-  // const liveAction = media.filter((item) => item.category === 'Live Action');
-  // console.log(liveAction);
+  // console.log(media)
+
+  const liveAction = media.filter((item) => item.category === 'Live Action' )
+  const fiveLiveAction = liveAction.slice(0,5)
+  // console.log(liveAction)
   return (
     <>
       <header>
@@ -24,7 +30,7 @@ function App() {
                 Originals, popular movies, and hit TV shows—all available with
                 your Prime membership.
               </p>
-              <button className="bg-white px-5 py-3 text-black rounded-md text-base lg:text-xl mt-9 hover:scale-[1.05] duration-150">
+              <button className="cursor-pointer bg-white px-5 py-3 text-black rounded-md text-base lg:text-xl mt-9 hover:scale-[1.05] duration-150">
                 Go to Amazon.com to Watch
               </button>
               <p className="mt-15 text-sm">
@@ -42,35 +48,56 @@ function App() {
         </section>
 
         {/* MAIN */}
-        <main className="bg-white text-black">
-          <section className="section-search max-w-7xl 2xl:max-w-[96rem] mx-auto py-16">
-            <h1 className="text-center text-xl lg:text-4xl 2xl:text-5xl font-medium mb-6">
-              Your favorite shows at <br />
-              your fingertips.
+        <main className="bg-white text-black py-20 px-25">
+          <section className="text-center">
+            <h1 className="text-3xl font-semibold">
+              Your favourite show at <br /> your fingertips.
             </h1>
-
-            <form className="relative text-center mx-auto w-[97%] md:w-[60%] 2xl:w-[55%]">
+            <form
+              action=""
+              className="mt-5 relative w-[96%] md:w-[65%] lg:w-[50%] mx-auto"
+            >
               <input
-                placeholder="What are you looking for?"
-                className="bg-[#F3F3F6] rounded-full text-sm px-4 md:px-6 py-3 md:py-4 w-full focus:ring-blue-300 focus:outline-none"
+                type="text"
+                placeholder="what are you looking for?"
+                className="w-full h-full py-4 px-5 bg-gray-100 rounded-full"
               />
-              <button type="submit" className="cursor-pointer absolute top-2 right-2.5 bg-blue-600 rounded-full px-2 py-2">
-                <FiSearch className="text-white w-5 h-5" />
+              <button className="py-2.5 px-2.5 bg-blue-500 hover:bg-blue-700 duration-150 rounded-full absolute top-2 right-2.5 ">
+                <IoSearchSharp className="text-white  w-5 h-5" />
               </button>
             </form>
           </section>
-        </main>
 
-        <section className="section-test">
-          <div className="grid grid-cols-4 gap-4">
-            {media.map((item) => (
-              <div key={item.id}>
-                <img src={item.landscapeBanner} alt={item.title} />
-                <h1>{item.title}</h1>
+          <section className="py-16 section-categories">
+            {/* <div className="grid gap-4 grid-cols-2 md:grid-cols-4 2xl:grid-cols-5">
+              {media.map((film)=>(
+                <Filmcard  title={film.title} poster={film.poster} releaseDate={film.releaseDate} />
+
+              ))}
+            </div> */}
+
+            <div className="live-action">
+              <div className="flex justify-between items-center mb-4">
+                <h1 className="text-xl font-semibold">Live Action Movies</h1>
+
+                <Link to="/about" className="flex space-x-1 items-center">
+                  <span>See more </span>
+                  <IoChevronForward />
+                </Link>
               </div>
-            ))}
-          </div>
-        </section>
+
+              <div className="grid gap-4 grid-cols-2 md:grid-cols-4 2xl:grid-cols-5">
+                {fiveLiveAction.map((film) => (
+                  <Filmcard
+                    title={film.title}
+                    poster={film.poster}
+                    releaseDate={film.releaseDate}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+        </main>
       </header>
     </>
   );
