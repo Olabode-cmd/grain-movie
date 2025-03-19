@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 
 body {
     background: #111;
-    color: #fff; 
+    color: #fff;
+    font-family: "Inter", sans-serif;
 }
 
 .hero-card {
-    background: linear-gradient(to right, #111 49%, #00000000 53%), url('./assets/Images/image.jpg');
-    background-size: cover;
-    height: 700px;
+    /* background: linear-gradient(to right, #111 49%, #00000000 53%), url('./assets/Images/image.jpg'); */
+    /* background-size: cover; */
+    /* height: 700px; */
 }
